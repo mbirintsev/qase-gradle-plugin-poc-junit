@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'io.qase.qase-gradle-plugin' version '2.2.0'
+}
+
+ext {
+    junitVersion = '5.7.2'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.qase:qase-api:2.2.0'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "org.junit.vintage:junit-vintage-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+}
